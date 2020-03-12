@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/all-repast-app-parent.iml" filepath="$PROJECT_DIR$/all-repast-app-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-common/repast-app-common.iml" filepath="$PROJECT_DIR$/repast-app-common/repast-app-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-config/repast-app-config.iml" filepath="$PROJECT_DIR$/repast-app-config/repast-app-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-consumer-management/repast-app-consumer-management.iml" filepath="$PROJECT_DIR$/repast-app-consumer-management/repast-app-consumer-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-7081/repast-app-eureka-7081.iml" filepath="$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-7081/repast-app-eureka-7081.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-7082/repast-app-eureka-7082.iml" filepath="$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-7082/repast-app-eureka-7082.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-7083/repast-app-eureka-7083.iml" filepath="$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-7083/repast-app-eureka-7083.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-management.iml" filepath="$PROJECT_DIR$/repast-app-eureka-management/repast-app-eureka-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-management/repast-app-management.iml" filepath="$PROJECT_DIR$/repast-app-management/repast-app-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-management/repast-app-management-api/repast-app-management-api.iml" filepath="$PROJECT_DIR$/repast-app-management/repast-app-management-api/repast-app-management-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-management/repast-app-management-mapper/repast-app-management-mapper.iml" filepath="$PROJECT_DIR$/repast-app-management/repast-app-management-mapper/repast-app-management-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-management/repast-app-management-model/repast-app-management-model.iml" filepath="$PROJECT_DIR$/repast-app-management/repast-app-management-model/repast-app-management-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-management/repast-app-management-service/repast-app-management-service.iml" filepath="$PROJECT_DIR$/repast-app-management/repast-app-management-service/repast-app-management-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-consumer-management/repast-app-memberinfo-consumer-6081/repast-app-memberinfo-consumer-6081.iml" filepath="$PROJECT_DIR$/repast-app-consumer-management/repast-app-memberinfo-consumer-6081/repast-app-memberinfo-consumer-6081.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-provider-management/repast-app-memberinfo-provider-8081/repast-app-memberinfo-provider-8081.iml" filepath="$PROJECT_DIR$/repast-app-provider-management/repast-app-memberinfo-provider-8081/repast-app-memberinfo-provider-8081.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-provider-management/repast-app-provider-management.iml" filepath="$PROJECT_DIR$/repast-app-provider-management/repast-app-provider-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repast-app-zuul-4081/repast-app-zuul-4081.iml" filepath="$PROJECT_DIR$/repast-app-zuul-4081/repast-app-zuul-4081.iml" />
+    </modules>
+  </component>
+</project>

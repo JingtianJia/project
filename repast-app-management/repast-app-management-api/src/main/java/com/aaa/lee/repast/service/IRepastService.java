@@ -5,8 +5,7 @@ import com.aaa.lee.repast.fallback.RepastFallBackFactory;
 import com.aaa.lee.repast.model.LoginLog;
 import com.aaa.lee.repast.model.Member;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -41,7 +40,7 @@ public interface IRepastService {
      * @author Seven Lee
      * @description
      *      登录日志保存
-     * @param [loginLog]
+     * @param map
      * @date 2020/3/11
      * @return java.lang.Boolean
      * @throws
@@ -49,4 +48,11 @@ public interface IRepastService {
     @PostMapping("/add")
     ResultData saveLog(@RequestBody Map map);
 
+    /**
+     * 查询积分
+     * @param token
+     * @return
+     */
+    @GetMapping("/queryIntegration")
+    ResultData queryIntegration(@RequestParam("token") String token);
 }

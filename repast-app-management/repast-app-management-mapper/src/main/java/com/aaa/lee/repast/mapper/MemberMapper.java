@@ -7,4 +7,6 @@ public interface MemberMapper extends Mapper<Member> {
 
     Member selectMemberByOpenId(String openId);
 
+    Member selectMemberByToken(String token);
+
 }

@@ -35,4 +35,7 @@
     select * from ums_member where open_id = #{openId}
   </select>
 
+  <select id="selectMemberByToken" parameterType="string" resultMap="BaseResultMap">
+    select * from ums_member where token = #{token}
+  </select>
 </mapper>

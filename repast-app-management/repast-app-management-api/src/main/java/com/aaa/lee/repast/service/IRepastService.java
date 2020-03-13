@@ -1,8 +1,7 @@
 package com.aaa.lee.repast.service;
 
 import com.aaa.lee.repast.base.ResultData;
-import com.aaa.lee.repast.fallback.RepastFallBackFactory;
-import com.aaa.lee.repast.model.LoginLog;
+
 import com.aaa.lee.repast.model.Member;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

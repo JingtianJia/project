@@ -5,7 +5,9 @@ import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -29,6 +31,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public ResultData saveLog(Map map) {
                 System.out.println("熔断日志方法！");
+                return null;
+            }
+
+            @Override
+            public ResultData queryIntegration(String token) {
+                System.out.println("熔断积分方法");
                 return null;
             }
         };

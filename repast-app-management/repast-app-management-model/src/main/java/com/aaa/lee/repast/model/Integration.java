@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "ums_integration_change_history")
@@ -13,7 +14,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-public class Integration {
+public class Integration implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

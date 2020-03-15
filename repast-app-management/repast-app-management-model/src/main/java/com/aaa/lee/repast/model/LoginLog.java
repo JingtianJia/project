@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "ums_member_login_log")
 @Data
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-public class LoginLog {
+public class LoginLog implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

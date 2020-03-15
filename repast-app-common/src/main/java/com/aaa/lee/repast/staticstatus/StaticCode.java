@@ -16,6 +16,13 @@ public class StaticCode {
     public static final String FORMAT_DATE = "yyyy-MM-dd hh:mm:ss";
     // TODO 这里的ip是测试数据，上线的时候注意替换
     public static final String TEST_IP = "222.137.210.39";
-
+    public static final String SELF="自己";
+    public static final String  INTEGRAL_INCREASE="增加积分";
+    public static final Integer TWO=2;
+    public static final Integer THREE=3;
+    public static final String  REDUCE_INCREASE="减少积分";
+    public static final Integer  ZERO = 0;
+    public static final Integer ONE=1;
+    public static final Integer ONE_THOUSAND=1000;
 
 }

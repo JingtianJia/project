@@ -2,6 +2,7 @@ package com.aaa.lee.repast.service;
 
 import com.aaa.lee.repast.base.ResultData;
 
+import com.aaa.lee.repast.model.Address;
 import com.aaa.lee.repast.model.Member;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -54,4 +55,40 @@ public interface IRepastService {
      */
     @GetMapping("/queryIntegration")
     ResultData queryIntegration(@RequestParam("token") String token);
+
+    /**
+     *  执行查询地址操作
+     * @param token
+     * @return
+     */
+    @PostMapping("/selectAddressAll")
+    ResultData selectAddressAll(@RequestParam(value = "token") String token);
+
+    /**
+     *  执行新增地址操作
+     * @param address
+     * @param token
+     * @return
+     */
+    @PostMapping("/addAddress")
+     ResultData  addAddress(@RequestBody Address address,
+                                  @RequestParam(value = "token") String token);
+
+    /**
+     *  执行通过token删除地址（逻辑删除）
+     * @param address
+     * @param token
+     * @return
+     */
+     @PostMapping("/delAddressInId")
+     ResultData delAddressInId(@RequestBody Address address, @RequestParam(value = "token") String token);
+
+    /**
+     *  执行修改地址操作
+     * @param address
+     * @param token
+     * @return
+     */
+    @PostMapping("/upAddress")
+    ResultData upAddress(@RequestBody Address address, @RequestParam(value = "token") String token);
 }

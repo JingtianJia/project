@@ -1,6 +1,7 @@
 package com.aaa.lee.repast.fallback;
 
 import com.aaa.lee.repast.base.ResultData;
+import com.aaa.lee.repast.model.Address;
 import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.service.IRepastService;
 import feign.hystrix.FallbackFactory;
@@ -37,6 +38,30 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public ResultData queryIntegration(String token) {
                 System.out.println("熔断积分方法");
+                return null;
+            }
+
+            @Override
+            public ResultData selectAddressAll(String token) {
+                System.out.println("熔断查询所有地址方法！");
+                return null;
+            }
+
+            @Override
+            public ResultData addAddress(Address address, String token) {
+                System.out.println("熔断新增地址方法！");
+                return null;
+            }
+
+            @Override
+            public ResultData delAddressInId(Address address, String token) {
+                System.out.println("熔断删除地址方法！");
+                return null;
+            }
+
+            @Override
+            public ResultData upAddress(Address address, String token) {
+                System.out.println("熔断修改地址方法！");
                 return null;
             }
         };

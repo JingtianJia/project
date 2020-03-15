@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -17,7 +18,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-public class Order {
+public class Order implements Serializable {
     /**
      * 订单id
      */

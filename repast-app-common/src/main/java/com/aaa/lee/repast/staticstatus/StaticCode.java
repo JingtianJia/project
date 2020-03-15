@@ -24,5 +24,5 @@ public class StaticCode {
     public static final Integer  ZERO = 0;
     public static final Integer ONE=1;
     public static final Integer ONE_THOUSAND=1000;
-
+    public static final String  OPERATION_FAILURE="操作失败";
 }

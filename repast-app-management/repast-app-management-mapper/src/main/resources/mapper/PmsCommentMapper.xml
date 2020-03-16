@@ -23,7 +23,37 @@
     <result column="replay_count" property="replayCount" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <select id="selectpmsCommentbyid" resultMap="BaseResultMap" parameterType="int">
-    select * from pms_comment where shop_id=#{shopId}
+  <select id="selectpmsCommentbyid" resultMap="BaseResultMap" parameterType="long">
+    select * from pms_comment where shop_id=#{shopId} and show_status=0
   </select>
+  <select id="selectpmsCommentbyorderid" resultMap="BaseResultMap" parameterType="long">
+    select * from pms_comment where order_id=#{orderId} and show_status=0
+  </select>
+  <insert id="insertcomment" parameterType="com.aaa.lee.repast.model.PmsComment"   >
+
+insert into pms_comment (shop_id,order_id,product_id,
+member_nick_name,product_name,star,
+member_ip,create_time,show_status,
+product_attribute,collect_couont,
+read_count,content,
+pics,member_icon,replay_count
+)
+VALUES
+(#{shopId},#{orderId},#{productId},
+#{memberNickName},#{productName},#{star},
+#{memberIp},NOW(),0,
+#{productAttribute},#{collectCouont},
+#{readCount},#{content},#{pics},
+#{memberIcon},#{replayCount})
+  </insert>
+
+  <update id="deletecomment" parameterType="com.aaa.lee.repast.model.PmsComment" >
+    UPDATE pms_comment set
+member_nick_name=#{memberNickName},product_name=#{productName},star=#{star},
+member_ip=#{memberIp},show_status=1,
+product_attribute=#{productAttribute},collect_couont=#{collectCouont},
+read_count=#{readCount},content=#{content},
+pics=#{pics},member_icon=#{memberIcon},replay_count=#{replayCount}
+  where order_id=#{orderId}
+  </update>
 </mapper>

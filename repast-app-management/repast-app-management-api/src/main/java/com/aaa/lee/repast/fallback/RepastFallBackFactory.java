@@ -3,6 +3,7 @@ package com.aaa.lee.repast.fallback;
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.Address;
 import com.aaa.lee.repast.model.Member;
+import com.aaa.lee.repast.model.PmsComment;
 import com.aaa.lee.repast.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
@@ -64,6 +65,34 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("熔断修改地址方法！");
                 return null;
             }
+
+            @Override
+            public ResultData byidselectcomment(String token, int shopid) {
+                System.out.println("熔断根据商品查询评论");
+                return null;
+            }
+
+            @Override
+            public ResultData byorderidselectcomment(String token, int order) {
+                System.out.println("熔断根据订单查询评论");
+                return null;
+            }
+
+            @Override
+            public ResultData insertcomment(String token, PmsComment pmsComment) {
+                System.out.println("熔断新增评论");
+                return null;
+            }
+
+
+
+            @Override
+            public ResultData deletecomment(String token, PmsComment pmsComment) {
+                System.out.println("熔断删除评论");
+                return null;
+            }
+
+
         };
         return repastService;
     }

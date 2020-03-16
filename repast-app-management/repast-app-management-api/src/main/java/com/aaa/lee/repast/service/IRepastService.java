@@ -4,6 +4,7 @@ import com.aaa.lee.repast.base.ResultData;
 
 import com.aaa.lee.repast.model.Address;
 import com.aaa.lee.repast.model.Member;
+import com.aaa.lee.repast.model.PmsComment;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -91,4 +92,46 @@ public interface IRepastService {
      */
     @PostMapping("/upAddress")
     ResultData upAddress(@RequestBody Address address, @RequestParam(value = "token") String token);
+
+    /**
+     *  执行通过商品id查询评论
+     * @param shopid
+     * @param token
+     * @return
+     */
+    @GetMapping("/byidselectcomment")
+    ResultData byidselectcomment(@RequestParam("token") String token,@RequestParam("shopid") int shopid);
+
+
+    /**
+     *  执行通过订单id查询评论
+     * @param shopid
+     * @param token
+     * @return
+     */
+    @GetMapping("/byorderidselectcomment")
+    ResultData byorderidselectcomment(@RequestParam("token") String token,@RequestParam("orderid") int orderid);
+
+    /**
+     *  执行增加评论
+     * @param pmsComment
+     * @param token
+     * @return
+     */
+    @PostMapping("/insertcomment")
+    public ResultData insertcomment(@RequestParam(value = "token") String token, @RequestBody PmsComment pmsComment);
+
+
+         /**
+     *  执行删除评论
+     * @param pmsComment
+     * @param token
+     * @return
+     */
+    @PostMapping("/deletecomment")
+    public ResultData deletecomment(@RequestParam(value = "token") String token, @RequestBody PmsComment pmsComment);
+
+
+
+
 }

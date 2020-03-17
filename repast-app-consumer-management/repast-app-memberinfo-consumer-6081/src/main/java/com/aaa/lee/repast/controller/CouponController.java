@@ -39,9 +39,9 @@ public class CouponController extends BaseController {
      * @Param [couponHistory]
      * @return com.aaa.lee.repast.base.ResultData
      **/
-    @PostMapping("/selcetCouponHistory")
-    ResultData selcetCouponHistoty(CouponHistory couponHistory){
-        return repastService.selcetCouponHistoty(couponHistory);
+    @PostMapping("/selectCouponHistory")
+    ResultData selectCouponHistory(CouponHistory couponHistory){
+        return repastService.selectCouponHistory(couponHistory);
     }
 
     /**
@@ -52,7 +52,7 @@ public class CouponController extends BaseController {
      * @return com.aaa.lee.repast.base.ResultData
      **/
     @PostMapping("/addCouponHistory")
-    ResultData addCouponHistoty(CouponHistory couponHistory){
-        return repastService.addCouponHistoty(couponHistory);
+    ResultData addCouponHistory(CouponHistory couponHistory){
+        return repastService.addCouponHistory(couponHistory);
     }
 }

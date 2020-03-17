@@ -27,8 +27,8 @@ public class CouponHistoryController extends CommonController<CouponHistory> {
     * @Param [couponHistory]
     * @return com.aaa.lee.repast.base.ResultData
     **/
-    @PostMapping("/selcetCouponHistory")
-    public ResultData selcetCouponHistoty(Map couponHistory){
+    @PostMapping("/selectCouponHistory")
+    public ResultData selectCouponHistory(Map couponHistory){
         return selcet(couponHistory);
     }
 
@@ -40,7 +40,7 @@ public class CouponHistoryController extends CommonController<CouponHistory> {
     * @return com.aaa.lee.repast.base.ResultData
     **/
     @PostMapping("/addCouponHistory")
-    public ResultData addCouponHistoty(CouponHistory couponHistory){
+    public ResultData addCouponHistory(CouponHistory couponHistory){
         Boolean aBoolean = couponHistoryService.addCouponHistory(couponHistory);
         if(aBoolean==true){
             return super.operationSuccess();
@@ -58,7 +58,7 @@ public class CouponHistoryController extends CommonController<CouponHistory> {
     * @return com.aaa.lee.repast.base.ResultData
     **/
     @PostMapping("/updateCouponHistory")
-    public ResultData updateCouponHistoty(CouponHistory couponHistory){
+    public ResultData updateCouponHistory(CouponHistory couponHistory){
         Boolean aBoolean = couponHistoryService.updateCouponHistory(couponHistory);
         if(aBoolean==true){
             return super.operationSuccess();

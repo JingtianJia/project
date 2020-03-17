@@ -25,4 +25,13 @@
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="member_level" property="memberLevel" jdbcType="INTEGER" />
   </resultMap>
+  <select id="selectCoupon" resultMap="BaseResultMap">
+    select * from coupon where enable_time > DATE_FORMAT(createTime,%y-%m-%d) and (platform = 0 or platform = 1)
+  </select>
+  <select id="selectNum" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select (publish_count - receive_count) num from coupon where id = ${id} FOR UPDATE
+  </select>
+  <update id="updateReceiveCountByID" parameterType="java.lang.Long">
+    update count set(receive=receive+1) where id = ${id}
+  </update>
 </mapper>

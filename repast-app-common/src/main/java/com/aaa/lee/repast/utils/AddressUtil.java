@@ -28,7 +28,7 @@ public class AddressUtil {
     **/
     public static Map<String, Object> getAddresses(String content, String encodingString) {
         // 这里调用百度API
-        String urlStr = "http://api.map.baidu.com/location/ip?ak=6P28Z5GDb4sUhPMgRx7bX8pyG2Vj6iXv&ip="+content+"&coor=bd09ll";
+        String urlStr = "http://api.map.baidu.com/location/ip?ak=jb8hghdqL1oOc0MsGNRkQ59EFRmeUA0p&ip="+ content+"&coor=bd09ll";
         String returnStr = getResult(urlStr, content, encodingString);
         if (returnStr != null) {
             // 处理返回的省市区信息

@@ -7,8 +7,11 @@ import com.aaa.lee.repast.model.Integration;
 import com.aaa.lee.repast.service.IntegrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 public class IntegrationController extends CommonController<Integration> {
@@ -20,13 +23,13 @@ public class IntegrationController extends CommonController<Integration> {
     }
 
     /**
-     * 查询积分接口
-     * @param token
+     * 查询历史积分
+     * @param map
      * @return
      */
     @GetMapping("/queryIntegration")
-    ResultData queryIntegration(@RequestParam("token") String token){
-        return integrationService.queryIntegration(token);
+    ResultData queryIntegration(@RequestBody Map map){
+        return selcet(map);
     }
 
 }

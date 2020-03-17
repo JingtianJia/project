@@ -15,7 +15,4 @@
     <result column="operate_note" property="operateNote" jdbcType="VARCHAR" />
     <result column="source_type" property="sourceType" jdbcType="INTEGER" />
   </resultMap>
-  <select id="selectIntegrationByMemberId" parameterType="string" resultMap="BaseResultMap">
-    select * from ums_integration_change_history where member_id = ${memberId}
-  </select>
 </mapper>

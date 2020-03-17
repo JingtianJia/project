@@ -2,7 +2,9 @@ package com.aaa.lee.repast.base;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -67,5 +69,80 @@ public abstract class CommonController<T> extends BaseController {
         }
         return super.operationFailed();
     }
+    /**
+     * @author Seven Lee
+     * @description
+     *      删除操作
+     * @param [map]
+     * @date 2020/3/13
+     * @return com.aaa.lee.repast.base.ResultData
+     * @throws
+     **/
+    public ResultData delete(@RequestBody Map map) {
+        T instance = getBaseService().newInstance(map);
+        Integer deleteResult = getBaseService().delete(instance);
+        if(deleteResult > 0) {
+            return super.operationSuccess();
+        }
+        return super.operationFailed();
+    }
 
+    /**
+     * 更新方法
+     * @param map
+     * @return
+     */
+    public ResultData update(@RequestBody Map map){
+        T updates = getBaseService().newInstance(map);
+        Integer update= getBaseService().update(updates);
+        if(update > 0) {
+            return super.operationSuccess();
+        }
+        return super.operationFailed();
+    }
+
+    /**
+     * 查询
+     * @param map
+     * @return
+     */
+    public ResultData selcet(@RequestBody Map map){
+        T select = getBaseService().newInstance(map);
+        List<T> ts = getBaseService().queryList(select);
+        if(ts.size()>0){
+            return super.operationSuccess(ts);
+        }
+        return super.operationSuccess();
+    }
+
+    /**
+     * 查询单个
+     * @param map
+     * @return
+     */
+    public ResultData selcetOne(@RequestBody Map map){
+        T select = getBaseService().newInstance(map);
+        T ts = getBaseService().queryOne(select);
+        if(null!=ts){
+            return super.operationSuccess(ts);
+        }
+        return super.operationSuccess();
+    }
+
+    /**
+     * @author Seven Lee
+     * @description
+     *      批量删除
+     * @param [ids]
+     * @date 2020/3/13
+     * @return com.aaa.lee.repast.base.ResultData
+     * @throws
+     **/
+    public ResultData batchDelete(@RequestParam("ids") Integer[] ids) {
+        Integer deleteResult = getBaseService().deleteBatch(ids);
+        if(deleteResult > 0) {
+            return operationSuccess();
+        }
+        return operationFailed();
+    }
 }

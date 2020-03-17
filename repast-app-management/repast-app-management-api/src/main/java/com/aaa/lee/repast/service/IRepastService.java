@@ -7,9 +7,13 @@ import com.aaa.lee.repast.model.CouponHistory;
 import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.model.PmsComment;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
+
+import static com.aaa.lee.repast.staticstatus.RequestProperties.TOKEN;
 
 /**
  * @Company AAA软件教育
@@ -169,5 +173,19 @@ public interface IRepastService {
     @PostMapping("/selectMember")
     ResultData selectMember(@RequestBody Member member);
 
-
+    /**
+     * @author Seven Lee
+     * @description
+     *      ftp文件上传
+     *      file的参数格式是multipart-file/form-data
+     *      普通的form表单格式:application/json
+     * @param [file, token]
+     * @date 2020/3/17
+     * @return java.lang.Boolean
+     * @throws
+     **/
+    @PostMapping(value = "/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
 }

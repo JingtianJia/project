@@ -8,6 +8,8 @@ import com.aaa.lee.repast.model.PmsComment;
 import com.aaa.lee.repast.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Map;
 
 /**
@@ -112,7 +114,11 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("熔断查询个人信息方法");
                 return null;
             }
-
+            @Override
+            public Boolean uploadFile(MultipartFile file, String token) {
+                System.out.println("熔断文件上传方法！");
+                return null;
+            }
         };
         return repastService;
     }

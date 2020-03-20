@@ -208,7 +208,7 @@ public class UmsCollectService extends BaseService<UmsCollect> {
     /*
      * 删除收藏的商品
      * */
-    public ResultData deleteUmsCollectProductId(@RequestParam("token") String token,@RequestParam("productId") Long productId,@RequestParam("shopId") Long shopId){
+    public ResultData deleteUmsCollectProductId(@RequestParam("token") String token,@RequestParam("shopId") Long shopId,@RequestParam("productId") Long productId){
         ResultData resultData=new ResultData();
         Member member=memberMapper.selectMemberByToken(token);
         if (null !=  member) {
@@ -217,19 +217,23 @@ public class UmsCollectService extends BaseService<UmsCollect> {
             UmsCollect umsCollect=new UmsCollect();
             umsCollect.setMemberId(memberId);
             umsCollect.setShopId(shopId);
-
+            umsCollect.setProductId(productId);
             Long kong= Long.valueOf(0);
 
-            if (umsCollect.getProductId()!=null&&umsCollect.getProductId()!=kong&&umsCollect.getProductId().equals(kong)){
-                //如果收藏中的productid不为空或0就证明是收藏的商品
+            if (umsCollect.getProductId()!=null&&umsCollect.getProductId()!=kong&&!umsCollect.getProductId().equals(kong)){
+
                 umsCollect.setProductId(productId);
                 int i=umsCollectMapper.delete(umsCollect);
+                if (i>0){
+                    resultData.setCode(SUCCESS.getCode());
+                    resultData.setMsg(SUCCESS.getMsg());
+                    resultData.setDetail("删除收藏的商品");
+                    return resultData;
+                }
             }
-
-            resultData.setCode(SUCCESS.getCode());
-            resultData.setMsg(SUCCESS.getMsg());
-
-            resultData.setDetail("删除收藏的商品");
+            resultData.setCode(FAILED.getCode());
+            resultData.setMsg(FAILED.getMsg());
+            resultData.setDetail("删除收藏的商品失败");
             return resultData;
         }
         resultData.setCode(FAILED.getCode());
@@ -252,9 +256,15 @@ public class UmsCollectService extends BaseService<UmsCollect> {
             umsCollect.setShopId(shopId);
             int i=umsCollectMapper.delete(umsCollect);
 
-            resultData.setCode(SUCCESS.getCode());
-            resultData.setMsg(SUCCESS.getMsg());
-            resultData.setDetail("删除收藏的店铺");
+            if (i>0) {
+                resultData.setCode(SUCCESS.getCode());
+                resultData.setMsg(SUCCESS.getMsg());
+                resultData.setDetail("删除收藏的店铺");
+                return resultData;
+            }
+            resultData.setCode(FAILED.getCode());
+            resultData.setMsg(FAILED.getMsg());
+            resultData.setDetail("删除收藏的店铺失败");
             return resultData;
         }
         resultData.setCode(FAILED.getCode());

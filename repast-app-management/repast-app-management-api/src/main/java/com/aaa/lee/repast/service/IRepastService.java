@@ -188,4 +188,46 @@ public interface IRepastService {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token);
+
+    /**
+     *  执行增加收藏
+     * @param shopId
+     * @param productId
+     * @param token
+     * @return
+     */
+    @PostMapping("/insertUmsCollect")
+    ResultData insertUmsCollect(@RequestParam(value = "token") String token,@RequestParam(value = "shopId") Long shopId,@RequestParam(value = "productId") Long productId);
+
+    /**
+     *  执行查询收藏店铺
+     * @param token
+     * @return
+     */
+    @GetMapping("/selectUmsCollectShopId")
+    ResultData selectUmsCollectShopId(@RequestParam(value = "token") String token);
+    /**
+     *  执行查询收藏商品
+     * @param token
+     * @return
+     */
+    @GetMapping("/selectUmsCollectProductId")
+    ResultData selectUmsCollectProductId(@RequestParam(value = "token") String token);
+
+    /**
+     *  执行删除收藏店铺
+     * @param token
+     * @return
+     */
+    @PostMapping("/deleteUmsCollectShopId")
+    ResultData deleteUmsCollectShopId(@RequestParam(value = "token") String token,@RequestParam(value = "shopId") Long shopId);
+
+    /**
+     *  执行删除收藏商品
+     * @param token
+     * @return
+     */
+    @PostMapping("/deleteUmsCollectProductId")
+    ResultData deleteUmsCollectProductId(@RequestParam(value = "token") String token,@RequestParam(value = "shopId") Long shopId,@RequestParam(value = "productId") Long productId);
+
 }

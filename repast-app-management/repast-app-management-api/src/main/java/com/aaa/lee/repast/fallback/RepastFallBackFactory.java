@@ -119,6 +119,38 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("熔断文件上传方法！");
                 return null;
             }
+
+            @Override
+            public ResultData insertUmsCollect(String token, Long shopId, Long productId) {
+                System.out.println("熔断新增收藏");
+                return null;
+            }
+
+            @Override
+            public ResultData selectUmsCollectShopId(String token) {
+                System.out.println("熔断查询收藏店铺");
+                return null;
+            }
+
+            @Override
+            public ResultData selectUmsCollectProductId(String token) {
+                System.out.println("熔断查询收藏商品");
+                return null;
+            }
+
+            @Override
+            public ResultData deleteUmsCollectShopId(String token, Long shopId) {
+                System.out.println("熔断删除收藏店铺");
+                return null;
+            }
+
+            @Override
+            public ResultData deleteUmsCollectProductId(String token, Long shopId, Long productId) {
+                System.out.println("熔断删除收藏商品");
+                return null;
+            }
+
+
         };
         return repastService;
     }

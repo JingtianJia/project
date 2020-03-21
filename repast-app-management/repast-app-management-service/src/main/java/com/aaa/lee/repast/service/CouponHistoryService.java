@@ -67,11 +67,14 @@ public class CouponHistoryService extends BaseService<CouponHistory> {
     public Boolean updateCouponHistoryTime(){
         CouponHistory couponHistory = new CouponHistory();
         Coupon coupon = new Coupon();
+        //设置使用状态为0
         couponHistory.setUseStatus(0);
+        //选择未使用的优惠券
         List<CouponHistory> couponHistories = queryList(couponHistory);
         if(null!=couponHistories){
             for (CouponHistory c: couponHistories) {
                 coupon.setId(c.getCouponId());
+                //根据优惠券id找到未使用但是即将过期的优惠券
                 List<Coupon> couponList = couponMapper.select(coupon);
                 coupon = couponList.get(0);
                 if(coupon.getEndTime().getTime()<System.currentTimeMillis()){

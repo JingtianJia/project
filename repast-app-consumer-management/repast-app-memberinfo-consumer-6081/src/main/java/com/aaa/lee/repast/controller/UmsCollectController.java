@@ -1,6 +1,5 @@
 package com.aaa.lee.repast.controller;
 
-import com.aaa.lee.repast.annotation.TokenAnnotation;
 import com.aaa.lee.repast.base.BaseController;
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.service.IRepastService;
@@ -23,7 +22,6 @@ public class UmsCollectController extends BaseController {
     /**
      * 收藏一个新的店铺或产品
      * */
-    @TokenAnnotation
     @ApiOperation(value = "新增收藏", notes = "新增收藏(token，shopId，productId)")
     @PostMapping("/insertUmsCollect")
     ResultData insertUmsCollect(@RequestParam("token") String token, @RequestParam("shopId") Long shopId, @RequestParam("productId") Long productId){
@@ -32,7 +30,6 @@ public class UmsCollectController extends BaseController {
     /**
      * 查询收藏的店铺
      * */
-    @TokenAnnotation
     @ApiOperation(value = "查询收藏的店铺", notes = "查询收藏的店铺(token)")
     @GetMapping("/selectUmsCollectShopId")
     ResultData selectUmsCollectShopId(@RequestParam("token") String token){
@@ -41,7 +38,6 @@ public class UmsCollectController extends BaseController {
     /**
      * 查询收藏的商品
      * */
-    @TokenAnnotation
     @ApiOperation(value = "查询收藏的商品", notes = "查询收藏的商品(token)")
     @GetMapping("/selectUmsCollectProductId")
     ResultData selectUmsCollectProductId(@RequestParam("token") String token){
@@ -50,7 +46,6 @@ public class UmsCollectController extends BaseController {
     /**
      * 删除收藏的店铺
      * */
-    @TokenAnnotation
     @ApiOperation(value = "删除收藏的店铺", notes = "删除收藏的店铺(token，shopId)")
     @PostMapping("/deleteUmsCollectShopId")
     ResultData deleteUmsCollectShopId(@RequestParam("token") String token, @RequestParam("shopId") Long shopId){
@@ -59,7 +54,6 @@ public class UmsCollectController extends BaseController {
     /**
      * 查询收藏的店铺
      * */
-    @TokenAnnotation
     @ApiOperation(value = "删除收藏的商品", notes = "删除收藏的商品(token，shopId，productId)")
     @PostMapping("/deleteUmsCollectProductId")
     ResultData deleteUmsCollectProductId(@RequestParam("token") String token, @RequestParam("shopId") Long shopId,@RequestParam("productId") Long productId){

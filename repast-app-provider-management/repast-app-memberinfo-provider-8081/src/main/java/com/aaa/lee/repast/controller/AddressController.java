@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.aaa.lee.repast.staticstatus.RequestProperties.TOKEN;
+
 /**
  * @Author 丁平达
  * @Date 2020/3/15 18:53
@@ -24,7 +26,7 @@ public class AddressController {
      * @return
      */
     @PostMapping("/selectAddressAll")
-    public ResultData  selectAddressAll(@RequestParam(value = "token") String token){
+    public ResultData  selectAddressAll(@RequestParam(value = TOKEN) String token){
             return  addressService.selectAddressAll(token);
     }
 
@@ -36,7 +38,7 @@ public class AddressController {
      */
     @PostMapping("/addAddress")
     public ResultData  addAddress(@RequestBody Address address,
-                                 @RequestParam(value = "token") String token){
+                                 @RequestParam(value = TOKEN) String token){
       return addressService.addAddress(address,token);
    }
 
@@ -48,7 +50,7 @@ public class AddressController {
      */
    @PostMapping("/delAddressInId")
    public ResultData delAddressInId(@RequestBody Address address,
-                                    @RequestParam(value = "token") String token){
+                                    @RequestParam(value = TOKEN) String token){
       return addressService.delAddressInId(address,token);
    }
     /**
@@ -59,7 +61,7 @@ public class AddressController {
      */
     @PostMapping("/upAddress")
    public ResultData upAddress(@RequestBody Address address,
-                               @RequestParam(value = "token") String token){
+                               @RequestParam(value = TOKEN) String token){
       return   addressService.upAddress(address,token);
    }
 }

@@ -14,6 +14,7 @@ public class StaticCode {
     public static final String COUNTRY = "country";
     public static final String CITY = "city";
     public static final String FORMAT_DATE = "yyyy-MM-dd HH:mm:ss";
+    public static final String FORMAT_DATE2="yyyy/MM/dd";
     // TODO 这里的ip是测试数据，上线的时候注意替换
     public static final String TEST_IP = "222.137.210.39";
     public static final String SELF="自己";
@@ -25,4 +26,10 @@ public class StaticCode {
     public static final Integer ONE=1;
     public static final Integer ONE_THOUSAND=1000;
     public static final String  OPERATION_FAILURE="操作失败";
+    public static final String  SLASH="/";
+    public static final String NULL_STRING="";
+    public static final double  ZERO_DOT_SEVEN=0.7;
+    public static final String FILE="file";
+    public static final Integer FIVE=5;
+    public static final Integer SEVEN=7;
 }

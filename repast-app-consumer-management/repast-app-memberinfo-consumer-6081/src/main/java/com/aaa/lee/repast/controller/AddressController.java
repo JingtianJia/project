@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.aaa.lee.repast.staticstatus.RequestProperties.*;
 import static com.aaa.lee.repast.staticstatus.StaticCode.*;
 
 /**
@@ -31,7 +32,7 @@ public class AddressController extends BaseController {
      */
     @PostMapping("/selectAddressAll")
     @ApiOperation(value = "查询地址", notes = "用户执行查询地址操作(接收app端传递数据)")
-    public ResultData selectAddressAll(@RequestParam(value = "token") String token){
+    public ResultData selectAddressAll(@RequestParam(value = TOKEN) String token){
         ResultData resultData = iRepastService.selectAddressAll(token);
         if(null!=resultData){
             return resultData;
@@ -48,7 +49,7 @@ public class AddressController extends BaseController {
     @PostMapping("/addAddress")
     @ApiOperation(value = "新增地址", notes = "用户执行新增地址操作(接收app端传递数据)")
     public ResultData  addAddress(@RequestBody Address address,
-                                  @RequestParam(value = "token") String token){
+                                  @RequestParam(value = TOKEN) String token){
         ResultData resultData = iRepastService.addAddress(address, token);
         if(null!=resultData){
             return resultData;
@@ -65,7 +66,7 @@ public class AddressController extends BaseController {
     @PostMapping("/delAddressInId")
     @ApiOperation(value = "删除地址", notes = "用户执行删除地址操作(接收app端传递数据)")
     public ResultData delAddressInId(@RequestBody Address address,
-                                     @RequestParam(value = "token") String token){
+                                     @RequestParam(value = TOKEN) String token){
         ResultData resultData = iRepastService.delAddressInId(address, token);
         if(null!=resultData){
             return resultData;
@@ -81,7 +82,7 @@ public class AddressController extends BaseController {
     @PostMapping("/upAddress")
     @ApiOperation(value = "修改地址", notes = "用户执行修改地址操作(接收app端传递数据)")
     public ResultData upAddress(@RequestBody Address address,
-                                @RequestParam(value = "token") String token){
+                                @RequestParam(value = TOKEN) String token){
         ResultData resultData = iRepastService.upAddress(address, token);
         if(null!=resultData){
             return resultData;

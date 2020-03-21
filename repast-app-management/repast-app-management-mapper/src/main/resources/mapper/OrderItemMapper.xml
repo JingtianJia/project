@@ -30,4 +30,11 @@
     <result column="gift_growth" property="giftGrowth" jdbcType="INTEGER" />
     <result column="product_attr" property="productAttr" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="selectOrder" parameterType="string" resultMap="BaseResultMap">
+    select * from  oms_order_item where order_sn=#{orderSn}
+  </select>
+  <select id="selectOrderItemSn" resultMap="BaseResultMap">
+   select * from oms_order_return_apply group by order_sn
+  </select>
+
 </mapper>

@@ -39,13 +39,10 @@ public class IntegrationService extends BaseService<Integration> {
      */
     public Boolean IntegralGrowthAdd(Order order){
         if (null != order.getMemberId()){
+            Integer giftPoint= order.getIntegration();
             Integer payAmount = order.getPayAmount().intValue();
             //获得订单的店铺id
             int shopId = order.getShopId().intValue();
-            //获取店铺对象
-            Product product = productMapper.selectProductGiftPoint(shopId);
-            //获取店铺赠送的积分
-            Integer giftPoint = product.getGiftPoint();
             //获取订单人id
             Long memberIdLong = order.getMemberId();
             int id = memberIdLong.intValue();

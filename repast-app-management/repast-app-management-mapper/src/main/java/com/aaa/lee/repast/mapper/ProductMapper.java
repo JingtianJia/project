@@ -8,5 +8,7 @@ import tk.mybatis.mapper.common.Mapper;
  */
 public interface ProductMapper extends Mapper<Product> {
     //根据店铺id获取对象
-    Product selectProductGiftPoint(int shopId);
+    Product selectProductGiftPoint(int id);
+    //修改商品的库存
+    Integer updateProductStock(Product product);
 }

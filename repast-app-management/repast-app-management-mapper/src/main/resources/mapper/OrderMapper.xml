@@ -55,6 +55,8 @@
   <select id="SelectOrderByPayAmount" parameterType="int" resultMap="BaseResultMap">
         select * from pms_product where pay_amount = #{payAmount}
   </select>
-
+  <select id="selectOrder" parameterType="string" resultMap="BaseResultMap">
+    select  * from oms_order where  order_sn=#{orderSn}
+  </select>
 
 </mapper>

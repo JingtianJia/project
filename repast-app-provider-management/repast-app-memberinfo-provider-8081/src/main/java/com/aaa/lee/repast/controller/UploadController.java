@@ -36,7 +36,7 @@ public class UploadController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token) {
-        return uploadService.upload(file, token);
+        return uploadService.upload(file, token).getIfSuccess();
     }
 
 }

@@ -46,6 +46,9 @@
     <result column="detail_mobile_html" property="detailMobileHtml" jdbcType="LONGVARCHAR" />
   </resultMap>
   <select id="selectProductGiftPoint" parameterType="int" resultMap="BaseResultMap">
-    select * from pms_product where shop_id=#{shopId}
+    select * from pms_product where id=#{id}
   </select>
+  <update id="updateProductStock" parameterType="com.aaa.lee.repast.model.Product">
+        update pms_product set stock=#{stock},low_stock=#{lowStock} where id=#{id}
+  </update>
 </mapper>

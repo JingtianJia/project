@@ -1,15 +1,14 @@
 package com.aaa.lee.repast.fallback;
 
 import com.aaa.lee.repast.base.ResultData;
-import com.aaa.lee.repast.model.Address;
-import com.aaa.lee.repast.model.CouponHistory;
-import com.aaa.lee.repast.model.Member;
-import com.aaa.lee.repast.model.PmsComment;
+import com.aaa.lee.repast.model.*;
+import com.aaa.lee.repast.page.PageInfos;
 import com.aaa.lee.repast.service.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -150,7 +149,41 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
 
+            @Override
+            public OrderReturnApply selectOrderReturnApply(Order order, String token) {
+                System.out.println("熔断查询个人退款方法！");
+                return null;
+            }
 
+            @Override
+            public Boolean InsertOrderReturnApplyOne(String token,OrderReturnApply orderReturnApply) {
+                System.out.println("熔断退款方法！");
+                return null;
+            }
+
+            @Override
+            public Boolean InsertOrderReturnApplyPic(MultipartFile file, String token, Long shopId, Long orderId, Long companyAddressId, String orderSn, String memberUsername, String returnName, String returnPhone, String reason, String description) {
+                System.out.println("熔断退款+上传图片方法！");
+                return null;
+            }
+
+            @Override
+            public List<OrderReturnApply> selectShopOrderReturnApply(PageInfos pageInfos, String token) {
+                System.out.println("熔断查询店铺下的所有SN方法！");
+                return null;
+            }
+
+            @Override
+            public List<OrderItem> selectOrderReturnApplyByOrderSn(OrderReturnApply orderReturnApply, String token) {
+                System.out.println("熔断查询店铺下的SN下的所有商品方法！");
+                return null;
+            }
+
+            @Override
+            public Boolean updateOrderReturnApplyByOrderSn(OrderReturnApply orderReturnApply, String token, String name) {
+                System.out.println("熔断退单审批方法！");
+                return null;
+            }
         };
         return repastService;
     }

@@ -9,4 +9,7 @@ import tk.mybatis.mapper.common.Mapper;
 public interface OrderMapper extends Mapper<Order> {
     //根据店铺Id查询店铺信息
     Order SelectOrderByPayAmount(int order);
+
+    //根据订单号查询订单
+    Order selectOrder(String orderSn);
 }

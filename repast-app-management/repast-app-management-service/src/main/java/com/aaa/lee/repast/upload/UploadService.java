@@ -1,6 +1,5 @@
 package com.aaa.lee.repast.upload;
 
-import com.aaa.lee.repast.VO.FileNameSite;
 import com.aaa.lee.repast.properties.FtpProperties;
 import com.aaa.lee.repast.utils.DateUtil;
 import com.aaa.lee.repast.utils.FileNameUtil;
@@ -36,7 +35,7 @@ public class UploadService {
      * @return java.lang.Boolean
      * @throws
     **/
-    public FileNameSite upload(MultipartFile file, String token) {
+    public String upload(MultipartFile file, String token) {
         // 目前来说有两个参数不舒服:1.filePath，2.fileName
         // 防止文件名重复，导致文件覆盖
         // 1.文件名替换
@@ -52,7 +51,7 @@ public class UploadService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new FileNameSite().setFilenameSite(null).setIfSuccess(false);
+        return null;
     }
 
 }

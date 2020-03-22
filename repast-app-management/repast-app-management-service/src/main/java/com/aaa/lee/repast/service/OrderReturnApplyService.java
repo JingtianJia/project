@@ -1,6 +1,5 @@
 package com.aaa.lee.repast.service;
 
-import com.aaa.lee.repast.VO.FileNameSite;
 import com.aaa.lee.repast.base.BaseService;
 import com.aaa.lee.repast.mapper.*;
 import com.aaa.lee.repast.model.*;
@@ -225,8 +224,10 @@ public class OrderReturnApplyService extends BaseService<OrderReturnApply> {
                 //照片地址和名字
                 String PicSite=null;
                 if (file!=null){
-                    FileNameSite upload = uploadService.upload(file, token);
-                    PicSite = upload.getFilenameSite();
+                    PicSite = uploadService.upload(file, token);
+                   if (null==PicSite){
+                       return false;
+                   }
                 }
                 for (OrderItem orderItem:orderItems){
                     //订单中的每一个商品的id
@@ -313,7 +314,7 @@ public class OrderReturnApplyService extends BaseService<OrderReturnApply> {
     /**
      *  查询当前订单下的所有商品
      * @param orderReturnApply
-     * @param List<OrderItem>
+     * @param
      * @return
      */
     public List<OrderItem> selectOrderReturnApplyByOrderSn

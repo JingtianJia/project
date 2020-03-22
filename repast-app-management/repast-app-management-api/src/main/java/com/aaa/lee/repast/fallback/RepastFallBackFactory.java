@@ -114,6 +114,11 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 return null;
             }
             @Override
+            public ResultData updateMember(String token, Member member) {
+                System.out.println("熔断更新用户信息方法");
+                return null;
+            }
+            @Override
             public Boolean uploadFile(MultipartFile file, String token) {
                 System.out.println("熔断文件上传方法！");
                 return null;

@@ -1,7 +1,9 @@
 package com.aaa.lee.repast.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -77,6 +79,8 @@ public class Member implements Serializable {
     /**
      * 注册时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @Column(name = "create_time")
     private Date createTime;
 

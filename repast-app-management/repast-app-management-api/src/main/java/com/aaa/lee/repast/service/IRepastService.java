@@ -173,6 +173,13 @@ public interface IRepastService {
      */
     @PostMapping("/selectMember")
     ResultData selectMember(@RequestBody Member member);
+    /**
+     * 根据id修改用户信息
+     * @param member
+     * @return
+     */
+    @PostMapping ("/updateMember")
+    public ResultData updateMember(@RequestParam("token")String token, @RequestBody Member member);
 
     /**
      * @author Seven Lee

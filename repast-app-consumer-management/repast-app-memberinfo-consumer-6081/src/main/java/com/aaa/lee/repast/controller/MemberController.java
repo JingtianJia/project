@@ -9,6 +9,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -46,5 +48,14 @@ public class MemberController extends BaseController {
             return super.loginSuccess();
         }
         return super.loginFailed();
+    }
+    /**
+     * 根据id修改用户信息
+     * @param member
+     * @return
+     */
+    @PostMapping ("/updateMember")
+    public ResultData updateMemberById(@RequestParam("token")String token, @RequestBody Member member){
+        return repastService.updateMember(token,member);
     }
 }

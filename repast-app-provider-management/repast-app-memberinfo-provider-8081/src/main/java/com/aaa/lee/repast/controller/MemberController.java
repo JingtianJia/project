@@ -2,6 +2,7 @@ package com.aaa.lee.repast.controller;
 
 import com.aaa.lee.repast.base.BaseService;
 import com.aaa.lee.repast.base.CommonController;
+import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,13 @@ public class MemberController extends CommonController<Member> {
     public Boolean doLogin(@RequestBody Member member) {
         return memberService.doLogin(member);
     }
-
+    /**
+     * 根据id修改用户信息
+     * @param memberId
+     * @return
+     */
+    @PostMapping ("/updateMember")
+    public ResultData updateMember(@RequestParam("token")String token, @RequestBody Member member){
+        return memberService.update(token,member);
+    }
 }

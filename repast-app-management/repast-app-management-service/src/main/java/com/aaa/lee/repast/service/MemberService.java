@@ -1,6 +1,7 @@
 package com.aaa.lee.repast.service;
 
 import com.aaa.lee.repast.base.BaseService;
+import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.mapper.MemberMapper;
 import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.utils.IDUtil;
@@ -8,6 +9,9 @@ import com.aaa.lee.repast.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
+
+import static com.aaa.lee.repast.status.StatusEnums.FAILED;
+import static com.aaa.lee.repast.status.StatusEnums.SUCCESS;
 
 /**
  * @Company AAA软件教育
@@ -100,5 +104,28 @@ public class MemberService extends BaseService<Member> {
         }
         return false;
     }
+    /**
+     * 通过id修改用户信息
+     * @param member
+     * @return
+     */
+    public ResultData update(String token, Member member){
+        Member mb = memberMapper.selectMemberByToken(token);
+        ResultData resultData = new ResultData();
+        if (null != mb) {
+            member.setId(mb.getId());
+            memberMapper.updateByPrimaryKey(member);
+            resultData.setCode(SUCCESS.getCode());
+            resultData.setMsg(SUCCESS.getMsg());
+            resultData.setDetail("用户信息更新成功");
+            resultData.setData(member);
+            return resultData;
+        }
+        resultData.setCode(FAILED.getCode());
+        resultData.setMsg(FAILED.getMsg());
+        resultData.setDetail("请登录后重试");
+        return resultData;
+    }
+
 
 }

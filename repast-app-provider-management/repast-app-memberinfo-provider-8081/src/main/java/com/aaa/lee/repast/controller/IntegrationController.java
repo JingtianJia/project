@@ -27,8 +27,6 @@ public class IntegrationController extends CommonController<Integration> {
      */
     @PostMapping("/queryIntegration")
     ResultData queryIntegration(@RequestBody Map map){
-        List<Integration> integrations = integrationService.queryIntegration(map);
-//        return super.operationSuccess("查询积分成功", integrations);
         return super.selcet(map);
     }
 

@@ -3,13 +3,17 @@ package com.aaa.lee.repast.controller;
 import com.aaa.lee.repast.base.BaseService;
 import com.aaa.lee.repast.base.CommonController;
 import com.aaa.lee.repast.base.ResultData;
+import com.aaa.lee.repast.model.CartItem;
 import com.aaa.lee.repast.model.Order;
 //import com.aaa.lee.repast.service.OrderService;
+import com.aaa.lee.repast.service.OrderService;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,9 +23,9 @@ import java.util.Map;
  * @Description
  **/
 public class OrderController /*extends CommonController<Order>*/ {
-/*    @Autowired
+    @Autowired
     private OrderService orderService;
-    @Override
+/*    @Override
     public BaseService<Order> getBaseService() {
         return orderService;
     }*/
@@ -30,5 +34,10 @@ public class OrderController /*extends CommonController<Order>*/ {
     public ResultData saveOrder(@RequestBody Map map){
         return null;
         //TODO
+    }
+    @PostMapping("/xiaDan")
+    public ResultData xiaDan(@RequestParam("token") String token, @RequestBody List<CartItem> cartItems){
+        return orderService.insertOrder(token, cartItems);
+
     }
 }

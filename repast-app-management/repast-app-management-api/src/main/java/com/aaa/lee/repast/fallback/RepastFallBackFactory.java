@@ -189,6 +189,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("熔断退单审批方法！");
                 return null;
             }
+
+            @Override
+            public ResultData xiaDan(String token, List<CartItem> cartItems) {
+                System.out.println("熔断下单方法");
+                return null;
+            }
         };
         return repastService;
     }

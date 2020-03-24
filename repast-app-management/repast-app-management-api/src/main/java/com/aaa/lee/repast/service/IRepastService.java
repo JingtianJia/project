@@ -321,4 +321,13 @@ public interface IRepastService {
                                             @RequestParam(value = TOKEN) String token,
                                             @RequestParam(value = NAME) String name);
 
+    /**
+     *  审批退单申请
+     * @param cartItems
+     * @param token
+     * @return
+     */
+    @PostMapping("/xiaDan")
+    ResultData xiaDan(@RequestParam("token") String token, @RequestBody List<CartItem> cartItems);
+
 }

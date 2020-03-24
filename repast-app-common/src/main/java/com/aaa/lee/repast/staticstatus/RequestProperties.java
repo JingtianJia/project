@@ -39,4 +39,9 @@ public class RequestProperties {
     public static final String PAGE_INFOS="pageInfos";
 
     public static final String NAME="name";
+    /**
+     * 常量productId
+     */
+    public static final String PRODUCT_ID = "productId";
+
 }

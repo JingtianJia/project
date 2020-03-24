@@ -27,5 +27,43 @@
     <result column="product_brand" property="productBrand" jdbcType="VARCHAR" />
     <result column="product_sn" property="productSn" jdbcType="VARCHAR" />
     <result column="product_attr" property="productAttr" jdbcType="VARCHAR" />
+    <result column="product_service_status" property="productServiceStatus" jdbcType="INTEGER"></result>
   </resultMap>
+  <delete id="deleteByProductIdAndMemberId">
+    delete from oms_cart_item where member_id = #{memberId} and product_id = #{productId}
+  </delete>
+
+  <select id="selectCartByMemberId" parameterType="Long" resultMap="BaseResultMap">
+    select * from oms_cart_item where member_id = #{memberId}
+  </select>
+
+  <select id="selectCartByMemberIdAndProductId" resultMap="BaseResultMap">
+    select * from oms_cart_item where member_id = #{memberId} and product_id = #{productId}
+  </select>
+
+  <insert id="addCartPro" parameterType="com.aaa.lee.repast.model.CartItem">
+    insert into oms_cart_item(product_id,product_sku_id,member_id,shop_id,quantity,price,sp1,sp2,sp3,product_pic,product_name,product_sub_title,product_sku_code,member_nickname,create_date,delete_status,product_category_id,product_brand,product_sn,product_attr,product_service_status)
+    values (#{productId},#{productSkuId},#{memberId},#{shopId},#{quantity},#{price},#{sp1},#{sp2},#{sp3},#{productPic},#{productName},#{productSubTitle},#{productSkuCode},#{memberNickname},#{createDate},#{deleteStatus},#{productCategoryId},#{productBrand},#{productSn},#{productAttr},#{productServiceStatus})
+  </insert>
+  <update id="updateCart" parameterType="com.aaa.lee.repast.model.CartItem">
+   UPDATE oms_cart_item
+   SET quantity = #{quantity},modify_date = #{modifyDate} where product_id = #{productId} AND member_id = #{memberId} AND delete_status = 0
+  </update>
+  <delete id="deleteCart" parameterType="com.aaa.lee.repast.model.CartItem">
+    delete from oms_cart_item where product_id = #{productId} AND member_id = #{memberId}
+  </delete>
+  <select id="selectMemberCart" parameterType="com.aaa.lee.repast.model.CartItem" resultMap="BaseResultMap">
+SELECT
+	cart.*,
+	stock
+FROM
+	oms_cart_item cart
+	INNER JOIN pms_product pt
+WHERE
+	pt.id = cart.product_id
+	AND cart.delete_status = 0
+	AND pt.delete_status = 0
+	AND product_id = #{productId}
+	AND cart.member_id = #{memberId}
+  </select>
 </mapper>

@@ -125,4 +125,6 @@ public class CartItem implements Serializable {
      */
     @Column(name = "product_attr")
     private String productAttr;
+    @Column(name = "product_service_status")
+    private Integer productServiceStatus;
 }

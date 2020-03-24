@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.lee.repast.mapper.ProductAttributeMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.lee.repast.model.ProductAttribute" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="product_attribute_category_id" property="productAttributeCategoryId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="select_type" property="selectType" jdbcType="INTEGER" />
+    <result column="input_type" property="inputType" jdbcType="INTEGER" />
+    <result column="input_list" property="inputList" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="filter_type" property="filterType" jdbcType="INTEGER" />
+    <result column="search_type" property="searchType" jdbcType="INTEGER" />
+    <result column="related_status" property="relatedStatus" jdbcType="INTEGER" />
+    <result column="hand_add_status" property="handAddStatus" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

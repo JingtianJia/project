@@ -20,7 +20,7 @@ import static com.aaa.lee.repast.staticstatus.StaticCode.*;
  * @Date 2020/3/15 19:05
  */
 @RestController
-@Api(value = "用户地址信息", tags = "用户地址信息接口(提供用户地址信息有关操作)")
+@Api(value = "用户地址信息", tags = "用户地址信息接口")
 public class AddressController extends BaseController {
     @Autowired
     private IRepastService iRepastService;
@@ -31,7 +31,7 @@ public class AddressController extends BaseController {
      * @return
      */
     @PostMapping("/selectAddressAll")
-    @ApiOperation(value = "查询地址", notes = "用户执行查询地址操作(接收app端传递数据)")
+    @ApiOperation(value = "查询地址", notes = "用户执行查询地址操作")
     public ResultData selectAddressAll(@RequestParam(value = TOKEN) String token){
         ResultData resultData = iRepastService.selectAddressAll(token);
         if(null!=resultData){

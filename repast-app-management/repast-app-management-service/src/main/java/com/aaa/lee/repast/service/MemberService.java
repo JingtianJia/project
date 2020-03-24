@@ -104,6 +104,22 @@ public class MemberService extends BaseService<Member> {
         }
         return false;
     }
+    
+    /**
+    * @Author Gotta
+    * @Description 检查token是否可用
+    * @Date 15:55 2020/3/24
+    * @Param token
+    * @return java.lang.Boolean
+    **/
+    public Boolean checkToken(String token) {
+        Member member = memberMapper.selectMemberByToken(token);
+        if(null == member) {
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * 通过id修改用户信息
      * @param member

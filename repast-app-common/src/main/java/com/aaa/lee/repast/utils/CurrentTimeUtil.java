@@ -11,7 +11,7 @@ import static com.aaa.lee.repast.staticstatus.StaticCode.FORMAT_DATE;
  * @Date 2020/3/18 18:47
  */
 public class CurrentTimeUtil {
-    public  Date currentTime(){
+    public static Date currentTime(){
         //获取当前时间
         Date date = new Date();
         SimpleDateFormat dateFormat= new SimpleDateFormat(FORMAT_DATE);

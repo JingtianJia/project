@@ -27,7 +27,7 @@ import static com.aaa.lee.repast.staticstatus.StaticCode.FILE;
  * @Date 2020/3/18 21:20
  */
 @RestController
-@Api(value = "用户退款信息", tags = "用户退款信息接口(提供用户退款信息有关操作)")
+@Api(value = "用户退款信息", tags = "用户退款信息接口")
 public class OrderReturnApplyController extends BaseController {
     @Autowired
     private IRepastService iRepastService;

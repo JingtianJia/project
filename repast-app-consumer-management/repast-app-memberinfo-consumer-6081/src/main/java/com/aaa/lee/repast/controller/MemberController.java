@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description
  **/
 @RestController
-@Api(value = "用户信息", tags = "用户信息接口(提供用户所欲有关操作)")
+@Api(value = "用户信息", tags = "用户信息接口")
 public class MemberController extends BaseController {
 
     @Autowired

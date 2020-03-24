@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description
  **/
 @RestController
-@Api(value = "优惠券服务", tags = "优惠券服务接口(提供优惠券有关操作)")
+@Api(value = "优惠券服务", tags = "优惠券服务接口")
 public class CouponController extends BaseController {
     @Autowired
     private IRepastService repastService;

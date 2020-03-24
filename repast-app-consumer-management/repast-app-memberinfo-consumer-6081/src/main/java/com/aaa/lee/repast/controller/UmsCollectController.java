@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(value = "收藏相关接口", tags = "收藏接口(提供用户所有有关操作)")
+@Api(value = "收藏相关接口", tags = "收藏接口")
 public class UmsCollectController extends BaseController {
     @Autowired
     private IRepastService iRepastService;

@@ -32,4 +32,33 @@ public class StaticCode {
     public static final String FILE="file";
     public static final Integer FIVE=5;
     public static final Integer SEVEN=7;
+    /**
+     * 常量nx
+     */
+    public static final String NX = "nx";
+
+    /**
+     * 常量xx
+     */
+    public static final String XX = "xx";
+
+    /**
+     * 常量ex
+     */
+    public static final String EX = "ex";
+
+    /**
+     * 常量px
+     */
+    public static final String PX = "px";
+
+    /**
+     * 常量ok
+     */
+    public static final String OK = "OK";
+
+    /**
+     * 常量no
+     */
+    public static final String NO = "NO";
 }

@@ -61,10 +61,34 @@ public class Map2BeanUtil {
              *
              *      }
              */
+
             String setMethodName = getSetMethodName(entry.getKey());
-            int index = methodAccess.getIndex(setMethodName, entry.getValue().getClass());
+            int index=0;
+            Class<?> aClass;
+            //增加为空值时跳过循环
+            try {
+               aClass = entry.getValue().getClass();
+            }catch (Exception e){
+                continue;
+            }
+            //增加数字无法转换为Long类型
+            try {
+
+                 index= methodAccess.getIndex(setMethodName, aClass);
+
             // 通过反射来获取对象(属性，set方法了，set方法的内容也有了)
-            methodAccess.invoke(instance, index, entry.getValue());
+                methodAccess.invoke(instance, index, entry.getValue());
+            }catch (Exception e){
+
+                if(aClass.getName()=="java.lang.Integer") {
+                     index= methodAccess.getIndex(setMethodName, Long.class);
+                    Integer a=(int)entry.getValue();
+                    Long b = a.longValue();
+                    methodAccess.invoke(instance, index,b );
+                }
+
+            }
+
         }
         return instance;
     }

@@ -11,6 +11,9 @@ public interface ProductMapper extends Mapper<Product> {
     Product selectProductGiftPoint(int id);
     //修改商品的库存
     Integer updateProductStock(Product product);
+    //通过id查询商品
     Product selectProductById(Long productId);
-    //8分钟未开启，加入购物车修改商品表库存的数量
+
+    //更新对应商品的库存，在原来的基础上加
+    Product updateStockById (Product product);
 }

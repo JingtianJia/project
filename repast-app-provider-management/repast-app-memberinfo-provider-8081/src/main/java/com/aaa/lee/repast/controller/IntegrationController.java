@@ -6,11 +6,9 @@ import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.Integration;
 import com.aaa.lee.repast.service.IntegrationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,9 +25,11 @@ public class IntegrationController extends CommonController<Integration> {
      * @param map
      * @return
      */
-    @GetMapping("/queryIntegration")
+    @PostMapping("/queryIntegration")
     ResultData queryIntegration(@RequestBody Map map){
-        return selcet(map);
+        List<Integration> integrations = integrationService.queryIntegration(map);
+//        return super.operationSuccess("查询积分成功", integrations);
+        return super.selcet(map);
     }
 
 }

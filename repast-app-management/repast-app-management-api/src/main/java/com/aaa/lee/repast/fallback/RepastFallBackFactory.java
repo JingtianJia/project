@@ -24,6 +24,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
     public IRepastService create(Throwable throwable) {
         IRepastService repastService = new IRepastService() {
             @Override
+            public Boolean checkToken(String token) {
+                System.out.println("熔断token验证！");
+                return null;
+            }
+
+            @Override
             public Boolean doLogin(Member member) {
                 System.out.println("熔断登录方法！");
                 return null;
@@ -193,6 +199,30 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public ResultData xiaDan(String token, List<CartItem> cartItems) {
                 System.out.println("熔断下单方法");
+                return null;
+            }
+
+            @Override
+            public Map<String, Object> deleteProductFromCart(Long productId, String token) {
+                System.out.println("熔断清空购物车的方法！");
+                return null;
+            }
+
+            @Override
+            public Map<String, Object> selectCartByToken(String token) {
+                System.out.println("熔断查询购物车的方法！");
+                return null;
+            }
+
+            @Override
+            public Map<String, Object> canteenAddProductToCart(String token, Long productId) {
+                System.out.println("熔断添加食堂商品到购物车");
+                return null;
+            }
+
+            @Override
+            public Boolean addCart(Map<String, Object> data, String token) {
+                System.out.println("熔断添加商品到购物车的方法！");
                 return null;
             }
         };

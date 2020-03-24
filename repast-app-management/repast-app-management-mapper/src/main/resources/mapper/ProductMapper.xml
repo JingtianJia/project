@@ -54,7 +54,7 @@
   <!--订单购物车-->
   <update id="updateStockById" parameterType="com.aaa.lee.repast.model.Product" >
     UPDATE pms_product
-    SET stock = #{stock}
+    SET stock = stock + #{stock}
     WHERE
 	    id = #{id}
     </update>

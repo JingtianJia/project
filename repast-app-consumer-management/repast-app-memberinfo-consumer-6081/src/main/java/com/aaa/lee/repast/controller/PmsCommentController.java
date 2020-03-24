@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(value = "查询此商品所有评论", tags = "商品评论接口(提供用户所欲有关操作)")
+@Api(value = "查询此商品所有评论", tags = "商品评论接口Map2BeanUtil")
 public class PmsCommentController  extends BaseController {
     @Autowired
     private IRepastService iRepastService;

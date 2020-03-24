@@ -5,8 +5,10 @@ import com.aaa.lee.repast.base.CommonController;
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.CouponHistory;
 import com.aaa.lee.repast.service.CouponHistoryService;
+import com.aaa.lee.repast.utils.Map2BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -58,7 +60,8 @@ public class CouponHistoryController extends CommonController<CouponHistory> {
     * @return com.aaa.lee.repast.base.ResultData
     **/
     @PostMapping("/updateCouponHistory")
-    public ResultData updateCouponHistory(CouponHistory couponHistory){
+    public ResultData updateCouponHistory(@RequestBody Map map){
+        CouponHistory couponHistory = Map2BeanUtil.map2Bean(map, CouponHistory.class);
         Boolean aBoolean = couponHistoryService.updateCouponHistory(couponHistory);
         if(aBoolean==true){
             return super.operationSuccess();
@@ -66,4 +69,6 @@ public class CouponHistoryController extends CommonController<CouponHistory> {
             return super.operationFailed();
         }
     }
+    
+
 }

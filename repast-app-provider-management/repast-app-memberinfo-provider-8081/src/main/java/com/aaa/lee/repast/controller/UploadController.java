@@ -22,7 +22,6 @@ public class UploadController {
 
     @Autowired
     private UploadService uploadService;
-
     /**
      * @author Seven Lee
      * @description
@@ -32,12 +31,15 @@ public class UploadController {
      * @return java.lang.Boolean
      * @throws
     **/
-//    @PostMapping(value = "/upload",
-//            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token) {
-//        return uploadService.upload(file, token).getIfSuccess();
-//    }
+    @PostMapping(value = "/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Boolean uploadFile(@RequestBody MultipartFile file, @RequestParam(TOKEN) String token) {
+        if (null != uploadService.upload(file, token)) {
+            return false;
+        }
+        return true;
+    }
 
 }
 

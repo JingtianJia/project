@@ -32,6 +32,16 @@ import static com.aaa.lee.repast.staticstatus.RequestProperties.DESCRIPTION;
 public interface IRepastService {
 
     /**
+    * @Author Gotta
+    * @Description 检查token是否可用
+    * @Date 15:55 2020/3/24
+    * @Param token
+    * @return java.lang.Boolean
+    **/
+    @PostMapping("/checkToken")
+    Boolean checkToken(@RequestParam("token") String token);
+    
+    /**
      * @author Seven Lee
      * @description
      *      执行登录操作
@@ -60,7 +70,7 @@ public interface IRepastService {
      * @param map
      * @return
      */
-    @GetMapping("/queryIntegration")
+    @PostMapping("/queryIntegration")
     ResultData queryIntegration(@RequestBody Map map);
 
     /**
@@ -330,4 +340,24 @@ public interface IRepastService {
     @PostMapping("/xiaDan")
     ResultData xiaDan(@RequestParam("token") String token, @RequestBody List<CartItem> cartItems);
 
+    /**
+     * 删除订单方法
+
+     */
+    @PostMapping("/deleteProductFromCart")
+    Map<String,Object> deleteProductFromCart(@RequestParam(PRODUCT_ID) Long productId, @RequestParam(TOKEN) String token);
+
+    @PostMapping("/selectCartByToken")
+    Map<String,Object> selectCartByToken(@RequestParam(TOKEN) String token);
+
+    /**
+     * 添加食堂商品到购物车
+     */
+    @PostMapping("/canteenAddProductToCart")
+    Map<String,Object> canteenAddProductToCart(@RequestParam(TOKEN) String token, @RequestParam(PRODUCT_ID) Long productId);
+    /**
+     * //添加商品到购物车
+     **/
+    @PostMapping("/addCart")
+    Boolean addCart(@RequestBody Map<String, Object> data, @RequestParam(TOKEN) String token);
 }

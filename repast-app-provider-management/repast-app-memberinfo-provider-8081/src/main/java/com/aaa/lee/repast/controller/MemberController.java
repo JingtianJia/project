@@ -27,18 +27,29 @@ public class MemberController extends CommonController<Member> {
     }
 
     /**
-     * @author Seven Lee
-     * @description
-     *      执行登录操作
-     * @param [member]
-     * @date 2020/3/10
-     * @return java.lang.Boolean
-     * @throws 
+    * @Author Gotta
+    * @Description 登录方法
+    * @Date 15:55 2020/3/24
+    * @Param member
+    * @return java.lang.Boolean
     **/
     @PostMapping("/doLogin")
     public Boolean doLogin(@RequestBody Member member) {
         return memberService.doLogin(member);
     }
+
+    /**
+    * @Author Gotta
+    * @Description 检查token是否可用
+    * @Date 13:02 2020/3/24 
+    * @Param token
+    * @return java.lang.Boolean
+    **/
+    @PostMapping("/checkToken")
+    public Boolean checkToken(@RequestParam("token") String token) {
+        return memberService.checkToken(token);
+    }
+    
     /**
      * 根据id修改用户信息
      * @param memberId

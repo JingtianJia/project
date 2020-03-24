@@ -17,6 +17,34 @@ public class RequestProperties {
      */
     public static final String POINT = ".";
 
+    /**
+     * 登录地址常量
+     */
+    public static final String DO_LOGIN_URL = "/doLogin";
+    /**
+     * http协议常量
+     */
+    public static final String HTTP_URL = "http://";
+    /**
+     * https协议常量
+     */
+    public static final String HTTPS_URL = "https://";
+    /**
+     * GET方式常量
+     */
+    public static final String GET_URL = "GET";
+    /**
+     * POST方式常量
+     */
+    public static final String POST_URL = "POST";
+    /**
+     * UTF-8编码集常量
+     */
+    public static final String UTF8_ENCODING = "UTF-8";
+    /**
+     * 常量productId
+     */
+    public static final String PRODUCT_ID = "productId";
 
     public static final String SHOP_ID= "shopId";
 
@@ -39,9 +67,6 @@ public class RequestProperties {
     public static final String PAGE_INFOS="pageInfos";
 
     public static final String NAME="name";
-    /**
-     * 常量productId
-     */
-    public static final String PRODUCT_ID = "productId";
+
 
 }

@@ -28,14 +28,6 @@ public class IntegrationService extends BaseService<Integration> {
     @Autowired
     private ProductMapper productMapper;
 
-    public List<Integration> queryIntegration(Map map){
-        Integration integration = new Integration();
-        integration.setMemberId(Long.valueOf(map.get("memberId").toString()));
-        return integrationMapper.select(integration);
-    }
-
-
-
     /**
      *       Dpd
      *      根据订单实际支付金额进行增加积分

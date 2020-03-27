@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import static com.aaa.lee.repast.staticstatus.RequestProperties.POINT;
-import static com.aaa.lee.repast.staticstatus.StaticCode.FORMAT_DATE2;
+import static com.aaa.lee.repast.staticstatus.StaticCode.FORMAT_TIME;
 
 /**
  * @Company AAA软件教育
@@ -43,7 +43,7 @@ public class UploadService {
         String newFileName = FileNameUtil.getFileName(token);
         newFileName = newFileName + oldFileName.substring(oldFileName.lastIndexOf(POINT));
         // 2.filePath
-        String filePath = DateUtil.formatDate(new Date(), FORMAT_DATE2);
+        String filePath = DateUtil.formatDate(new Date(), FORMAT_TIME);
         try {
             return FtpUtil.uploadFile(ftpProperties.getHost(), ftpProperties.getPort(), ftpProperties.getUsername()
             , ftpProperties.getPassword(), ftpProperties.getBasePath(),ftpProperties.getHttpPath(),

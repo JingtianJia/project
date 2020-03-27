@@ -108,4 +108,10 @@ public class Coupon implements Serializable {
      */
     @Column(name = "member_level")
     private Integer memberLevel;
+
+    @Column(name = "product_category_id")
+    private Long productCategoryId;
+
+    @Column(name = "product_id")
+    private Long productId;
 }

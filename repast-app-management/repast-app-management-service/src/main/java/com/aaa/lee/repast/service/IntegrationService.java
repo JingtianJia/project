@@ -1,14 +1,12 @@
 package com.aaa.lee.repast.service;
 
 import com.aaa.lee.repast.base.BaseService;
-import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.mapper.IntegrationMapper;
 import com.aaa.lee.repast.mapper.MemberMapper;
 import com.aaa.lee.repast.mapper.ProductMapper;
 import com.aaa.lee.repast.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

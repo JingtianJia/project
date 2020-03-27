@@ -2,7 +2,7 @@ package com.aaa.lee.repast.controller;
 
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.CartItem;
-import com.aaa.lee.repast.service.IRepastService;
+import com.aaa.lee.repast.service.IOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ import java.util.List;
 @Api(value = "下单", tags = "下单")
 public class OrderController {
     @Autowired
-    private IRepastService iRepastService;
+    private IOrderService iMemberService;
     @GetMapping("/xiaDao")
     @ApiOperation(value = "下单", notes = "下单(token，shopId)")
     ResultData xiaDan(@RequestParam("token") String token, @RequestBody List<CartItem> cartItems){
 
-        return iRepastService.xiaDan(token, cartItems);
+        return iMemberService.xiaDan(token, cartItems);
     }
 }

@@ -6,7 +6,7 @@ import com.aaa.lee.repast.model.Order;
 import com.aaa.lee.repast.model.OrderItem;
 import com.aaa.lee.repast.model.OrderReturnApply;
 import com.aaa.lee.repast.page.PageInfos;
-import com.aaa.lee.repast.service.IRepastService;
+import com.aaa.lee.repast.service.IOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ import static com.aaa.lee.repast.staticstatus.StaticCode.FILE;
 @Api(value = "用户退款信息", tags = "用户退款信息接口")
 public class OrderReturnApplyController extends BaseController {
     @Autowired
-    private IRepastService iRepastService;
+    private IOrderService iMemberService;
     /**
      *      查询单个要退款的订单
      * @param order
@@ -41,7 +41,7 @@ public class OrderReturnApplyController extends BaseController {
     @ApiOperation(value = "查询个人单个订单退款", notes = "用户执行查询退款操作(接收app端传递数据)")
     public OrderReturnApply selectOrderReturnApply(@RequestBody Order order,
                                                    @RequestParam(value = TOKEN) String token){
-        OrderReturnApply orderReturnApply = iRepastService.selectOrderReturnApply(order, token);
+        OrderReturnApply orderReturnApply = iMemberService.selectOrderReturnApply(order, token);
         if(null!=orderReturnApply){
             return orderReturnApply;
         }
@@ -61,7 +61,7 @@ public class OrderReturnApplyController extends BaseController {
     @ApiOperation(value = "新增退款申请(备用)", notes = "用户执行新增退款申请操作(接收app端传递数据)")
     public ResultData InsertOrderReturnApplyOne(@RequestParam(value = TOKEN) String token,
                                                 @RequestBody OrderReturnApply orderReturnApply){
-        Boolean aBoolean = iRepastService.InsertOrderReturnApplyOne(token,orderReturnApply);
+        Boolean aBoolean = iMemberService.InsertOrderReturnApplyOne(token,orderReturnApply);
         if(aBoolean) {
             return super.operationSuccess();
         }
@@ -97,7 +97,7 @@ public class OrderReturnApplyController extends BaseController {
                                                 @RequestParam(value = RETURN_PHONE) String returnPhone,
                                                 @RequestParam(value = REASON) String reason,
                                                 @RequestParam(value = DESCRIPTION) String description){
-        Boolean aBoolean = iRepastService.InsertOrderReturnApplyPic(file, token, shopId, orderId, companyAddressId, orderSn,
+        Boolean aBoolean = iMemberService.InsertOrderReturnApplyPic(file, token, shopId, orderId, companyAddressId, orderSn,
                 memberUsername, returnName, returnPhone, reason, description);
         if(aBoolean) {
             return super.operationSuccess();
@@ -115,7 +115,7 @@ public class OrderReturnApplyController extends BaseController {
     @ApiOperation(value = "新增查询店铺下的sn详情", notes = "用户执行新增查询店铺下的sn操作(接收app端传递数据)")
     public  List<OrderReturnApply> selectShopOrderReturnApply(PageInfos pageInfos,
                                                               @RequestParam(value = TOKEN) String token){
-        List<OrderReturnApply> stringPageInfo = iRepastService.selectShopOrderReturnApply(pageInfos, token);
+        List<OrderReturnApply> stringPageInfo = iMemberService.selectShopOrderReturnApply(pageInfos, token);
         if (null!=stringPageInfo){
             return stringPageInfo;
         }
@@ -132,7 +132,7 @@ public class OrderReturnApplyController extends BaseController {
     @ApiOperation(value = "新增查询SN下的商品详情", notes = "用户执行新增查询查询SN下的商品操作(接收app端传递数据)")
     List<OrderItem> selectOrderReturnApplyByOrderSn(OrderReturnApply orderReturnApply,
                                                     @RequestParam(value = TOKEN) String token){
-     return    iRepastService.selectOrderReturnApplyByOrderSn(orderReturnApply,token);
+     return    iMemberService.selectOrderReturnApplyByOrderSn(orderReturnApply,token);
     }
     /**
      *  审批退单申请
@@ -145,7 +145,7 @@ public class OrderReturnApplyController extends BaseController {
     Boolean updateOrderReturnApplyByOrderSn(@RequestBody OrderReturnApply orderReturnApply,
                                             @RequestParam(value = TOKEN) String token,
                                             @RequestParam(value = NAME) String name){
-        Boolean aBoolean = iRepastService.updateOrderReturnApplyByOrderSn(orderReturnApply, token, name);
+        Boolean aBoolean = iMemberService.updateOrderReturnApplyByOrderSn(orderReturnApply, token, name);
         return    aBoolean ;
     }
 }

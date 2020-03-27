@@ -26,12 +26,31 @@
     <result column="member_level" property="memberLevel" jdbcType="INTEGER" />
   </resultMap>
   <select id="selectCoupon" resultMap="BaseResultMap">
-    select * from coupon where enable_time > DATE_FORMAT(createTime,%y-%m-%d) and (platform = 0 or platform = 1)
+    select * from sms_coupon where TO_DAYS(enable_time) > TO_DAYS(NOW()) and (platform = 0 or platform = 1)
   </select>
   <select id="selectNum" parameterType="java.lang.Long" resultType="java.lang.Integer">
-    select (publish_count - receive_count) num from coupon where id = ${id} FOR UPDATE
+    select (publish_count - receive_count) num from sms_coupon where id = ${id} FOR UPDATE
   </select>
   <update id="updateReceiveCountByID" parameterType="java.lang.Long">
-    update count set(receive=receive+1) where id = ${id}
+    update sms_coupon set(receive_count = receive_count+1) where id = ${id}
   </update>
+
+<!--  <select id="selectCouponVoToProduct" parameterType="Long" resultMap="java.util.Map">-->
+<!--    select c.id,c.shop_id,c.type,c.name,c.platform,-->
+<!--    c.amount,c.min_pointfrom,c.start_time,c.end_time,-->
+<!--    c.use_type,c.note,c.code,pro.product_id-->
+<!--    from sms_coupon c,-->
+<!--    sms_coupon_product_relation pro-->
+<!--    where-->
+<!--    c.id = #{id} and c.id = pro.coupon_id limit 1-->
+<!--  </select>-->
+<!--  <select id="selectCouponVoToCategory" parameterType="Long" resultType="java.util.Map">-->
+<!--    select c.id,c.shop_id,c.type,c.name,c.platform,-->
+<!--    c.amount,c.min_pointfrom,c.start_time,c.end_time,-->
+<!--    c.use_type,c.note,c.code,cate.product_category_id-->
+<!--    from sms_coupon c,-->
+<!--    sms_coupon_product_category_relation cate-->
+<!--    where-->
+<!--    c.id = #{id} and c.id = cate.coupon_id limit 1-->
+<!--  </select>-->
 </mapper>

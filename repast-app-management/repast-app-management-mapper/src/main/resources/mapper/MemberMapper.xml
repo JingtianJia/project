@@ -42,11 +42,11 @@
   <select id="selectMemberIdByIntegration" parameterType="int"  resultMap="BaseResultMap">
       select * from ums_member where  id = #{id}
   </select>
-  <update id="updateMemberIntegration" parameterType="com.aaa.lee.repast.model.Member" >
+  <update id="updateMemberIntegration" parameterType="Member" >
         update ums_member set integration=#{integration},history_integration=#{historyIntegration}
             where   open_id=#{openId}
   </update>
-  <update id="updateMemberReduceIntegration" parameterType="com.aaa.lee.repast.model.Member" >
+  <update id="updateMemberReduceIntegration" parameterType="Member" >
         update ums_member set integration=#{integration}  where   open_id=#{openId}
   </update>
 </mapper>

@@ -1,16 +1,16 @@
 package com.aaa.lee.repast.aspect;
 
 import com.aaa.lee.repast.annotation.LoginLogAnnotation;
-import com.aaa.lee.repast.controller.MemberController;
-import com.aaa.lee.repast.model.LoginLog;
-import com.aaa.lee.repast.model.Member;
-import com.aaa.lee.repast.service.IRepastService;
+import com.aaa.lee.repast.service.IMemberService;
 import com.aaa.lee.repast.utils.AddressUtil;
 import com.aaa.lee.repast.utils.DateUtil;
+import com.aaa.lee.repast.utils.GetZuulFilterParamsUtil;
 import com.aaa.lee.repast.utils.IPUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -37,13 +37,11 @@ import static com.aaa.lee.repast.staticstatus.StaticCode.*;
 public class LogAspect {
 
     @Autowired
-    private IRepastService repastService;
+    private IMemberService repastService;
 
     /**
-     * @author Seven Lee
-     * @description
-     *      就是为了定义切面，也就是说让AOP在哪里生效
-     *      也就是说当AOP检测到LoginLogAnnotation注解的时候，被该注解所标识的方法就会执行
+     *
+     *      定义切面，AOP检测到LoginLogAnnotation注解的时候，被该注解所标识的方法就会执行
      *      切面业务代码
      * @param []
      * @date 2020/3/11
@@ -56,17 +54,10 @@ public class LogAspect {
     }
 
     /**
-     * @author Seven Lee
-     * @description
-     *      定义环形切面(具体要执行业务逻辑的代码)
-     *      ProceedingJoinPoint:封装了目标路径(被LoginLogAnnotation注解所标识方法)
-     *      中的所有参数
-     *      也就是说我可以通过这个ProceedingJoinPoint参数获取(获取目标路径的方法名，方法参数个数，方法参数类型，方法
+     *      ProceedingJoinPoint:
+     *      封装了目标路径(被LoginLogAnnotation注解所标识方法)中的所有参数
+     *      ProceedingJoinPoint可以获取(获取目标路径的方法名，方法参数个数，方法参数类型，方法
      *      返回值，方法参数的值)
-     * @param [proceedingJoinPoint]
-     * @date 2020/3/11
-     * @return java.lang.Object
-     * @throws
     **/
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Exception {
@@ -80,27 +71,14 @@ public class LogAspect {
         // 获取Request对象
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest();
+
         // 获取用户的ip地址(HttpServletRequest对象)
         String ipAddr = IPUtil.getIpAddr(request);
 
-        // 如何获取MemberController中doLogin方法中的Member参数对象
-        /**
-         * 第一种:(这种情况就只能适用于方法中只有一个参数，如果方法中多个参数的情况下，需要做判断)
-         *      通过member获取
-         *      通过这种形式发现member中没有province信息
-         *      通过这种方式去获取openId
-         *      至于city和province不会通过这种形式获取(因为数据不准确)
-         *
-         *      member是从微信端传递过来的--->获取的是用户所设置的地区--->这个地区是随意(想写哪就写哪)
-         */
-        Member member = new Member();
+        // 如何获取MemberController中doLogin方法中的参数对象
         Object[] args = proceedingJoinPoint.getArgs();
-        for (Object arg : args) {
-            Member mb1 = (Member) arg.getClass().newInstance();
-            System.out.println(mb1);// 直接是null对象，通过反射创建null的实例对象
-            member = (Member) arg;
 
-        }
+        Map params = GetZuulFilterParamsUtil.getParams((HttpServletRequest)args[0]);
 
         // 如何获取operationType和operationName值
         // 1.获取目标路径(只能指的是类-->MemberController)的全限定名
@@ -131,39 +109,26 @@ public class LogAspect {
         }
 
         /**
-         * 第二种方式:
          *      通过用户的ip地址来获取用户的地理位置
-         *      会使用到一个外部API(百度)
-         *      ---->自己去定义一个工具类(向百度api去发送请求--->再去接收百度api所响应回来的数据)
+         *      向百度api去发送请求--->再去接收百度api所响应回来的数据
          */
         // 百度api只能获取静态公网ip(俗称服务器的ip)--->或者获取运营商的手机ip
         // 只能模拟ip地址
         Map<String, Object> addressMap = AddressUtil.getAddresses(TEST_IP, ENCODING);
-        LoginLog loginLog = new LoginLog();
-        // 在member对象中
-        loginLog.setProvince((String)addressMap.get(PROVINCE)); // 省份信息
-        loginLog.setLoginType(3);// 登录类型(3:小程序)
-        loginLog.setCity((String)addressMap.get(CITY));// 城市信息
-        String dateString = DateUtil.formatDate(new Date(), FORMAT_DATE);
-        loginLog.setCreateTime(dateString);// 日志创建时间
-        loginLog.setIp(ipAddr);// 用户ip地址
-        loginLog.setOpenId(member.getOpenId());// 微信所传递过来的openId
-        // 在LoginLog注解中
-        loginLog.setOperationType(operationType);// 操作类型
-        loginLog.setOperationName(operationName);// 具体操作事项
 
+        String dateString = DateUtil.formatDate(new Date(), FORMAT_TIME);
         Map map = new HashMap();
         map.put("province", (String)addressMap.get(PROVINCE));
         map.put("loginType", 3);
         map.put("city", (String)addressMap.get(CITY));
         map.put("createTime", dateString);
         map.put("ip", ipAddr);
-        map.put("openId", member.getOpenId());
+        //map.put("openId", member.getOpenId());
         map.put("operationType", operationType);
         map.put("operationName", operationName);
 
         repastService.saveLog(map);
-        return result;// 表示直接代码结束，返回controller
+        return result;
     }
 
 

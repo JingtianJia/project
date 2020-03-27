@@ -26,7 +26,16 @@ public class SendParams2ControllerUtil {
             public ServletInputStream getInputStream() throws IOException {
                 return new ServletInputStreamWrapper(bodyBytes);
             }
-            //判断String长度
+
+            /**
+             * @author Seven Lee
+             * @description
+             *      是判断String长度
+             * @param []
+             * @date 2020/3/18
+             * @return int
+             * @throws
+             **/
             @Override
             public int getContentLength() {
                 return bodyBytes.length;

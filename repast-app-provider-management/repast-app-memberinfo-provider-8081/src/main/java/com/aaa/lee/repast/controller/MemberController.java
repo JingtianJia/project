@@ -5,8 +5,11 @@ import com.aaa.lee.repast.base.CommonController;
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.service.MemberService;
+import com.aaa.lee.repast.vo.TokenVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 /**
@@ -34,8 +37,12 @@ public class MemberController extends CommonController<Member> {
     * @return java.lang.Boolean
     **/
     @PostMapping("/doLogin")
-    public Boolean doLogin(@RequestBody Member member) {
-        return memberService.doLogin(member);
+    public ResultData doLogin(@RequestBody Map map) {
+        TokenVo tokenVo = memberService.doLogin(map);
+        if (tokenVo.getIfSuccess()) {
+            return loginSuccess("登录成功", tokenVo);
+        }
+        return loginFailed();
     }
 
     /**
@@ -52,7 +59,7 @@ public class MemberController extends CommonController<Member> {
     
     /**
      * 根据id修改用户信息
-     * @param memberId
+     * @param
      * @return
      */
     @PostMapping ("/updateMember")

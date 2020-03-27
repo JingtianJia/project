@@ -3,7 +3,7 @@ package com.aaa.lee.repast.controller;
 import com.aaa.lee.repast.base.BaseController;
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.model.CouponHistory;
-import com.aaa.lee.repast.service.IRepastService;
+import com.aaa.lee.repast.service.IMemberService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "优惠券服务", tags = "优惠券服务接口")
 public class CouponController extends BaseController {
     @Autowired
-    private IRepastService repastService;
+    private IMemberService repastService;
     /**
      * @Author 贾敬田
      * @Description 查询可用优惠券

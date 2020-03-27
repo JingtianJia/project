@@ -23,7 +23,8 @@ public class PostParamsUtil {
             ServletInputStream inp;
             try {
                 inp = rcx.getRequest().getInputStream();// 这就是以POST形式发送过来的数据流
-                if(null != inp) {
+                // 判断输入流是否有为null，也就是说判断客户端是否真的把参数传递过来了
+                if(null != inp && !inp.equals("")) {
                     // 传参了
                     params = IOUtils.toString(inp);
                 }

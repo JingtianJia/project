@@ -2,7 +2,7 @@ package com.aaa.lee.repast.controller;
 
 import com.aaa.lee.repast.base.BaseController;
 import com.aaa.lee.repast.base.ResultData;
-import com.aaa.lee.repast.service.IRepastService;
+import com.aaa.lee.repast.service.IMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController extends BaseController {
 
     @Autowired
-    private IRepastService repastService;
+    private IMemberService repastService;
 
     /**
      * @author Seven Lee

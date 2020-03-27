@@ -4,7 +4,6 @@ import com.aaa.lee.repast.base.BaseService;
 import com.aaa.lee.repast.base.ResultData;
 import com.aaa.lee.repast.mapper.MemberMapper;
 import com.aaa.lee.repast.mapper.PmsCommentMapper;
-import com.aaa.lee.repast.model.Integration;
 import com.aaa.lee.repast.model.Member;
 import com.aaa.lee.repast.model.PmsComment;
 import com.aaa.lee.repast.utils.IPUtil;

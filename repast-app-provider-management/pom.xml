@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>repast-app-memberinfo-provider-8081</module>
+        <module>repast-app-orderinfo-provider-8082</module>
     </modules>
 
     <dependencies>
@@ -46,6 +47,7 @@
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
     </dependencies>
+
 
 
 </project>

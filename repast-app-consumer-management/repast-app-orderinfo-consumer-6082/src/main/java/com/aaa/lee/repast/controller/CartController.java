@@ -2,7 +2,7 @@ package com.aaa.lee.repast.controller;
 
 import com.aaa.lee.repast.base.BaseController;
 import com.aaa.lee.repast.base.ResultData;
-import com.aaa.lee.repast.service.IRepastService;
+import com.aaa.lee.repast.service.IOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import static com.aaa.lee.repast.staticstatus.RequestProperties.TOKEN;
 @Api(value = "购物车",tags = "购物车的所有接口")
 public class CartController extends BaseController {
     @Autowired
-    private IRepastService cartService;
+    private IOrderService cartService;
 
     /**
      * 从购物车中删除商品

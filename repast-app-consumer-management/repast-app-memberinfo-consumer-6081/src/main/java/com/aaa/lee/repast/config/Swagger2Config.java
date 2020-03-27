@@ -34,9 +34,9 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("订单项目 服务接口")
-                .description("提供了项目中所有接口信息")
-                .contact(new Contact("Seven Lee", "http://www.seven.com", "sevenLee@Gmail.com"))
+                .title("个人中心项目接口")
+                .description("提供了个人中心项目中所有接口信息")
+                .contact(new Contact("15", "http://www.baidu.com", "sevenLee@Gmail.com"))
                 .version("1.0 beta")
                 .build();
     }
